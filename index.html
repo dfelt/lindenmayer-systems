@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>L-Systems</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="/css/main.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/LSystem.js"></script>
+    <script type="text/javascript" src="/js/GUI.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+  </head>
+  <body>
+  <canvas id="canvas" width="750" height="750">
+      If you can see this, you probably have Internet Explorer. Try a real browser.
+  </canvas>
+  <div id="wrapper">
+    <div id="buttons">
+      <button type="button" id="next_level">Next Level</button>
+      <button type="button" id="reset">Reset</button>
+      <button type="button" id="next_sys">Next L-system</button>
+      <button type="button" id="submit">Submit System</button>
+    </div>
+    <div class="expander"><span class="state">Hide</span> Instructions</div>
+    <div id="instructions">
+      Welcome! This is quite obviously unfinished. Click "Next Level" to iterate
+      through successive stages of the fractal. Don't go too far because the
+      calculations can slow down your browser. Click "Next L-System" to view
+      the next fractal in the table below.
+    </div>
+    <div class="expander"><span class="state">Hide</span> L-System variables</div>
+    <div id="variables">
+      <table id="vars" cellspacing="2">
+        <tr>
+          <td width="25%"><label for="name">Name:</label></td>
+          <td width="75%">
+            <input type="text" id="name"/>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="axiom">Initial String:</label></td>
+          <td><input type="text" id="axiom" class="upper"/></td>
+        </tr>
+        <tr>
+          <td><label for="angle">Angle:</label></td>
+          <td><input type="text" id="angle"/></td>
+        </tr>
+        <tr>
+          <td><label for="author">Author:</label></td>
+          <td><input type="text" id="author"/></td>
+        </tr>
+        <tr id="notes_label">
+          <td colspan="2">
+            <label for="notes">Notes</label>
+            <textarea id="notes" rows="3"></textarea>
+          </td>
+        </tr>
+      </table>
+      <div id="rules_wrapper">
+        <div id="rules_container"></div>
+        <button type="button" class="rule_control" id="add_rule">Add rule</button>
+        <button type="button" class="rule_control" id="remove_rule">Remove rule</button>
+      </div>
+    </div>
+    <div class="expander"><span class="state">Hide</span> Commands string</div>
+    <div id="commands"></div>
+
+    <div class="expander"><span class="state">Hide</span> L-Systems table</div>
+    <table id="main_systems" border="1" cellspacing="0" cellpadding="2">
+      <thead>
+        <tr>
+          <th width="10%">Name</th>
+          <th width="10%">Axiom</th>
+          <th width="35%">Rules</th>
+          <th width="05%">Angle</th>
+          <th width="10%">Author</th>
+          <th width="30%">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        
+        {% for fract in fractals %}
+        <tr class='sys'>
+          <td>{{ fract.name }}</td>
+          <td>{{ fract.axiom }}</td>
+          <td>
+              {% for rule in fract.rules %}{{ rule }} {% cycle →,<br> %} {% endfor %}
+          </td>
+          <td>{{ fract.angle }}</td>
+          <td>{{ fract.author }}</td>
+          <td>{{ fract.notes }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

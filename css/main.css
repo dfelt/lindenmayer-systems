@@ -1,0 +1,78 @@
+
+#canvas {border: 2px solid black}
+
+#wrapper {width: 750px}
+
+#buttons {margin-bottom: 20px}
+#next_level, #reset {width: 100px; height: 30px}
+#next_sys {width: 200px; height: 30px}
+#submit {width: 150px; height: 30px}
+
+.expander {
+    text-align: center;
+    font-weight: bold;
+    background-color: #ddd;
+    margin-top: 15px;
+    cursor: pointer;
+    border: 1px black solid;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+}
+.expander:hover {
+    background-color: #ccf;
+}
+.collapsed {
+    /* when an expander is collapsed, the bottom corners are rounded too so the
+       element forms an oval */
+    border-bottom: 1px black solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+}
+.state {display: none}
+
+#instructions, #variables {border: 1px black solid; padding: 10px}
+
+#vars {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    border-right: 1px black solid;
+}
+#name, #axiom, #angle, #author, #notes {width: 100%}
+#notes_label {text-align: center; font-weight: bold}
+
+#rules_wrapper {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+#rules_container {width: 100%}
+.rule_control {width: 30%; height: 25px}
+.rule {width: 100%; margin: 5px 0; display: block}
+.predecessor {width: 20px}
+.successor {width: 80%}
+
+
+#commands {
+    width: 97%;
+    height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 1px black solid;
+    padding: 10px;
+    font-family: monospace;
+}
+
+#main_systems {
+    width: 100%;
+    cursor: pointer;
+    display: block;     /* table won't slide up and down correctly if display: table */
+}
+#main_systems tr.sys:not(.highlight):hover {background-color: #ccf} /* eww */
+tr.highlight {background-color: yellow}
